@@ -1,4 +1,4 @@
-import numpy
+﻿import numpy
 import numpy.linalg
 
 import gzip
@@ -28,40 +28,40 @@ class LogisticRegression(object):
 
     def forward(self, x):
         # Calculate pre-activation.
-        self.pre_activation = numpy.dot(self.W, x) + self.b
+        self.pre_activation = 
         # Calculate softmax.
-        exp = numpy.exp(self.pre_activation)
+        exp = 
         assert not numpy.isinf(exp).any()
-        norm = sum(exp);
-        self.p_y_given_x = exp / norm
+        norm = 
+        self.p_y_given_x = 
         # Which class is the most probable?
-        self.y_pred = numpy.argmax(self.p_y_given_x)
+        self.y_pred = 
         # end-snippet-1
         self.input = x
 
     def negative_log_likelihood(self, y):
         """Negative log likelihood is the function we optimize i.e. search for a minimum."""
-        return -log(self.p_y_given_x[y])
+        return 
 
     def error(self, y):
         # Return true if correctly predicted and false otherwise.
         if self.y_pred == y:
-            return False
+            return 
         else:
-            return True
+            return 
 
     def calc_pre_activation_grad(self, expected):
         # Calculate loss function gradient with respect to pre-activations.
-        self.pre_activation_grad = numpy.copy(self.p_y_given_x)
-        self.pre_activation_grad[expected, 0] -= 1
+        self.
+        self.
 
     def W_grad(self):
         # Calculate loss function gradient with respect to weights using pre-activation gradient and input.
-        return numpy.dot(self.pre_activation_grad, self.input.transpose())
+        return 
 
     def b_grad(self):
         # Return loss function gradient with respect to bias.
-        return self.pre_activation_grad
+        return 
 
     def test(self, dataset):
         # Input is data set.
@@ -70,10 +70,7 @@ class LogisticRegression(object):
         # - List of triplets which are [example index, correct (i.e. expected) class, predicted class]
         x, y = dataset
         errors =[]
-        for i in xrange(x.shape[0]):
-            self.forward(x[i].reshape(x.shape[1], 1))
-            if (self.error(y[i])):
-                errors.append([i, y[i], self.y_pred])
+        Missing stuff!
         return float(len(errors)) / x.shape[0], errors
 
 def stochastic_gradient_descent(dataset=r'..\data\mnist.pkl.gz', n_epochs=100, alpha=0.01):

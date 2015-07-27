@@ -1,4 +1,4 @@
-import numpy
+﻿import numpy
 
 from logistic_regression import LogisticRegression, load_data
 
@@ -46,22 +46,21 @@ class HiddenLayer(object):
 
     def forward(self, x):
         # Calculate forward for pass for this layer.
-        lin_output = numpy.dot(self.W, x) + self.b
+        lin_output = 
         # If activation is not None apply it on pre-activations
         self.output = (
-            lin_output if self.activation is None
-            else self.activation(lin_output)
+            Missing stuff!
         )
         self.input = x
 
     def W_grad(self):
         # Calculate loss function gradient with respect to weight using gradient with respect to
         # pre-activations and input to this layer.
-        return numpy.dot(self.pre_activation_grad, numpy.transpose(self.input))
+        return 
 
     def b_grad(self):
         # Return loss function gradient with respect to bias.
-        return self.pre_activation_grad
+        return 
 
 class NN(object):
     """Multi-Layer Perceptron Class
@@ -112,26 +111,24 @@ class NN(object):
 
     def forward(self, x):
         # Forward pass through the network: forward for logistic regression and hidden layer.
-        self.hiddenLayer.forward(x)
-        self.logRegressionLayer.forward(self.hiddenLayer.output)
+        self.
+        self.
 
     def backward(self, y):
         # Backward for logistic regression.
-        self.logRegressionLayer.calc_pre_activation_grad(y)
+        self.
         # Calculate loss function hidden layer output gradient.
-        self.hiddenLayer.output_grad = numpy.dot(
-            numpy.transpose(self.logRegressionLayer.W),
-            self.logRegressionLayer.pre_activation_grad)
+        self.
         # Calculate activation function derivative.
-        activation_der = numpy.ones(self.hiddenLayer.output.shape, dtype=numpy.float32) - numpy.square(self.hiddenLayer.output)
-        self.hiddenLayer.pre_activation_grad = numpy.multiply(self.hiddenLayer.output_grad, activation_der)
+        activation_der = 
+        self.hiddenLayer.pre_activation_grad = 
 
     def update_weights(self, alpha):
         # Update weight for logistic regression and hidden layer.
-        self.logRegressionLayer.W -= alpha * self.logRegressionLayer.W_grad()
-        self.logRegressionLayer.b -= alpha * self.logRegressionLayer.b_grad()
-        self.hiddenLayer.W -= alpha * self.hiddenLayer.W_grad()
-        self.hiddenLayer.b -= alpha * self.hiddenLayer.b_grad()
+        self.
+        self.
+        self.
+        self.
 
     def test(self, dataset):
         # Input is data set.
@@ -140,10 +137,7 @@ class NN(object):
         # - List of triplets which are [example index, correct (i.e. expected) class, predicted class]
         x, y = dataset
         errors =[]
-        for i in xrange(x.shape[0]):
-            self.forward(x[i].reshape(x.shape[1], 1))
-            if (self.logRegressionLayer.error(y[i])):
-                errors.append([i, y[i], self.logRegressionLayer.y_pred])
+        Missing stuff!
         return float(len(errors)) / x.shape[0], errors
 
 def nn_stochastic_gradient_descent(dataset=r'..\data\mnist.pkl.gz', n_epochs=100, alpha=0.01):
